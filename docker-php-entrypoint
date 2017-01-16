@@ -1,6 +1,13 @@
 #!/bin/sh
 set -e
 
+# expose environment since 5.3 does not support clear_env = no
+PHP_ENV="/usr/local/etc/php-fpm.d/env.conf"
+echo "[www]" > "$PHP_ENV"
+env | while IFS='=' read -r name value ; do
+	echo "env[$name] = '$value'" >> "$PHP_ENV"
+done
+
 # first arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then
 	set -- php-fpm "$@"
