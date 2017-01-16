@@ -175,6 +175,8 @@ RUN set -ex \
 		echo '[www]'; \
 		#echo 'listen = [::]:9000'; \
 		echo 'listen = /var/run/php/php-fpm.sock'; \
+		echo 'listen.owner = www-data'; \
+		echo 'listen.group = www-data'; \
 		echo 'user = www-data'; \
 		echo 'group = www-data'; \
 	} | tee php-fpm.d/zz-docker.conf
