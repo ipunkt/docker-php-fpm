@@ -174,11 +174,11 @@ RUN set -ex \
 		echo; \
 		echo '[www]'; \
 		#echo 'listen = [::]:9000'; \
-		echo 'listen = /var/run/php/php-fpm.sock'; \
 		echo 'listen.owner = www-data'; \
 		echo 'listen.group = www-data'; \
 		echo 'user = www-data'; \
 		echo 'group = www-data'; \
+		echo 'listen = /var/run/php/php-fpm.sock'; \
 	} | tee php-fpm.d/zz-docker.conf
 
 RUN apt-get update && apt-get install -y libmcrypt-dev libmysqlclient-dev \
