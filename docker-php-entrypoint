@@ -5,7 +5,9 @@ set -e
 PHP_ENV="/usr/local/etc/php-fpm.d/env.conf"
 echo "[www]" > "$PHP_ENV"
 env | while IFS='=' read -r name value ; do
-	echo "env[$name] = '$value'" >> "$PHP_ENV"
+	if [ ! -z "$name" -a ! -z "$value" ] ; then
+		echo "env[$name] = '$value'" >> "$PHP_ENV"
+	fi
 done
 
 # first arg is `-f` or `--some-option`
