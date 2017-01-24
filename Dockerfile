@@ -182,8 +182,8 @@ RUN set -ex \
 	} | tee php-fpm.d/zz-docker.conf
 
 RUN apt-get update && apt-get install -y libmcrypt-dev libmysqlclient-dev \
-	 && docker-php-ext-install -j$(nproc) iconv mcrypt mysql \
-	&& docker-php-ext-enable iconv mcrypt mysql
+	 && docker-php-ext-install -j$(nproc) iconv mcrypt mysql pdo_mysql \
+	&& docker-php-ext-enable iconv mcrypt mysql pdo_mysql
 
 EXPOSE 9000
 CMD ["php-fpm"]
