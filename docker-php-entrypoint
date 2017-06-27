@@ -19,8 +19,10 @@ USER="www-data"
 if [ ! -z "$USER_ID" -a ! -z "$GROUP_ID" ] ; then
    echo "Switching to user"
    USER="user"
-   deluser "$USER"
-   delgroup "$USER"
+	if id "$USER" > /dev/null 2>&1 ; then
+		deluser "$USER"
+		delgroup "$USER"
+	fi
    addgroup --gid "$GROUP_ID" "$USER"
    adduser --disabled-password --disabled-login --no-create-home --system --uid "$USER_ID" --gid "$GROUP_ID" "$USER"
 fi
