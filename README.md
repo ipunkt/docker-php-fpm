@@ -4,6 +4,10 @@ PHP FPM based on the official php docker images for versions not supported there
 # Configuration
 - php memory limit: Set the environent variable PHP\_MEMORY\_LIMIT to your
   desired limit. leaving it empty will use 1024M as default
+- php post limit: Set the environent variable PHP\_POST\_MAX\_SIZE to your
+  desired limit. leaving it empty will use 8M as default
+- php file upload size limit: Set the environent variable PHP\_UPLOAD\_MAX\_FILESIZE
+  to your desired limit. leaving it empty will use 2M as default
 
 # Usage
 ## Docker

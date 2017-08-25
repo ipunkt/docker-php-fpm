@@ -30,8 +30,17 @@ fi
 if [ -z "$PHP_MEMORY_LIMIT" ] ; then
 	PHP_MEMORY_LIMIT="1024M"
 fi
+if [ -z "$PHP_POST_MAX_SIZE" ] ; then
+	PHP_POST_MAX_SIZE="8M"
+fi
+if [ -z "$PHP_UPLOAD_MAX_FILESIZE" ] ; then
+	PHP_UPLOAD_MAX_FILESIZE="2M"
+fi
+
 sed -e "s/%%USER%%/$USER/" \
 	-e "s/%%PHP_MEMORY_LIMIT%%/$PHP_MEMORY_LIMIT/" \
+	-e "s/%%PHP_POST_MAX_SIZE%%/$PHP_POST_MAX_SIZE/" \
+	-e "s/%%PHP_UPLOAD_MAX_FILESIZE%%/$PHP_UPLOAD_MAX_FILESIZE/" \
 	"/usr/local/etc/php-fpm.d/zz-docker.conf.tpl" > /usr/local/etc/php-fpm.d/zz-docker.conf
 
 exec "$@"
