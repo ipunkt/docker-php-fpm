@@ -26,6 +26,12 @@ if [ ! -z "$USER_ID" -a ! -z "$GROUP_ID" ] ; then
    addgroup --gid "$GROUP_ID" "$USER"
    adduser --disabled-password --disabled-login --no-create-home --system --uid "$USER_ID" --gid "$GROUP_ID" "$USER"
 fi
-sed -e "s/%%USER%%/$USER/" "/usr/local/etc/php-fpm.d/zz-docker.conf.tpl" > /usr/local/etc/php-fpm.d/zz-docker.conf
+
+if [ -z "$PHP_MEMORY_LIMIT" ] ; then
+	PHP_MEMORY_LIMIT="1024M"
+fi
+sed -e "s/%%USER%%/$USER/" \
+	-e "s/%%PHP_MEMORY_LIMIT%%/$PHP_MEMORY_LIMIT/" \
+	"/usr/local/etc/php-fpm.d/zz-docker.conf.tpl" > /usr/local/etc/php-fpm.d/zz-docker.conf
 
 exec "$@"
