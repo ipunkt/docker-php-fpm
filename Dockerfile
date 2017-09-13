@@ -182,7 +182,7 @@ RUN set -ex \
 		echo 'php_admin_value[memory_limit] = %%PHP_MEMORY_LIMIT%%'; \
 		echo 'php_admin_value[post_max_size] = %%PHP_POST_MAX_SIZE%%'; \
 		echo 'php_admin_value[upload_max_filesize] = %%PHP_UPLOAD_MAX_FILESIZE%%'; \
-		echo 'php_admin_value[date.timezone] = %%PHP_DEFAULT_TIMEZONE%%'; \
+		echo 'php_admin_value[date.timezone] = '%%PHP_DEFAULT_TIMEZONE%%'; \
 		echo 'listen = /var/run/php/php-fpm.sock'; \
 	} | tee php-fpm.d/zz-docker.conf.tpl
 
