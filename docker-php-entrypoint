@@ -45,7 +45,7 @@ sed -e "s/%%USER%%/$USER/" \
 	-e "s/%%PHP_MEMORY_LIMIT%%/$PHP_MEMORY_LIMIT/" \
 	-e "s/%%PHP_POST_MAX_SIZE%%/$PHP_POST_MAX_SIZE/" \
 	-e "s/%%PHP_UPLOAD_MAX_FILESIZE%%/$PHP_UPLOAD_MAX_FILESIZE/" \
-	-e "s/%%PHP_DEFAULT_TIMEZONE%%/$DEFAULT_TIMEZONE/" \
+	-e "s~%%PHP_DEFAULT_TIMEZONE%%~$DEFAULT_TIMEZONE~" \
 	"/usr/local/etc/php-fpm.d/zz-docker.conf.tpl" > /usr/local/etc/php-fpm.d/zz-docker.conf
 
 exec "$@"
