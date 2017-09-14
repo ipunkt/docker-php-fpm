@@ -8,6 +8,8 @@ PHP FPM based on the official php docker images for versions not supported there
   desired limit. leaving it empty will use 8M as default
 - php file upload size limit: Set the environent variable PHP\_UPLOAD\_MAX\_FILESIZE
   to your desired limit. leaving it empty will use 2M as default
+- php default timezone: Set the environent variable DEFAULT\_TIMEZONE to your
+  desired zone. Leaving it empty will use UTC as default
 
 # Usage
 ## Docker
