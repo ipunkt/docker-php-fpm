@@ -11,6 +11,20 @@ PHP FPM based on the official php docker images for versions not supported there
 - php default timezone: Set the environent variable DEFAULT\_TIMEZONE to your
   desired zone. Leaving it empty will use UTC as default
 
+## Smtp
+This image uses ssmtp for sending mails. The following environment variables can
+be set to influence the ssmtp configuration file:
+
+||= Environment variable =||= ssmtp configuration file value =||= default value =||
+||  ====================  ||  ==============================  ||  =============  ||
+|| SMTP\_SERVER           || mailhub                          || smtp            ||
+|| SMTP\_TLS              || UseTLS                           || NO              ||
+|| SMTP\_START\_TLS       || UseSTARTTLS                      || NO              ||
+|| SMTP\_USER             || AuthUser                         || smtp            ||
+|| SMTP\_PASSWORD         || AuthPass                         || smtp            ||
+|| SMTP\_AUTHENTICATION   || AuthMethod                       || LOGIN           ||
+|| FROM\_OVERRIDE         || FromLineOverride                 || YES             ||
+
 # Usage
 ## Docker
 docker run -d --name fpm53 ipunktbs/php-fpm:53-1.1.7

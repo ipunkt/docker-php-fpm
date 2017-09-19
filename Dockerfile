@@ -187,6 +187,17 @@ RUN set -ex \
 	} | tee php-fpm.d/zz-docker.conf.tpl
 
 RUN apt-get update && apt-get install -y libmcrypt-dev libmysqlclient-dev \
+	ssmtp \
+	&& { \
+	 echo 'mailhub=%%SMTP_SERVER%%'; \
+	 echo 'hostname=%%HOSTNAME%%'; \
+	 echo 'AuthUser=%%AUTH_USER%%'; \
+	 echo 'AuthPass=%%AUTH_PASS%%'; \
+	 echo 'AuthMethod=%%AUTH_METHOD%%'; \
+	 echo 'FromLineOverride=%%FROM_OVERRIDE%%'; \
+	 echo 'UseTLS=%%USE_TLS%%'; \
+	 echo 'UseSTARTTLS=%%START_TLS%%'; \
+ } | tee /etc/ssmtp.conf.tpl 	\
 	 && docker-php-ext-install -j$(nproc) iconv mcrypt mysql pdo_mysql \
 	&& docker-php-ext-enable iconv mcrypt mysql pdo_mysql
 

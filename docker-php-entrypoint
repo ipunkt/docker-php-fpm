@@ -41,6 +41,45 @@ if [ -z "$DEFAULT_TIMEZONE" ] ; then
 	DEFAULT_TIMEZONE="UTC"
 fi
 
+if [ -z "$SMTP_SERVER" ] ; then
+	SMTP_SERVER="smtp"
+fi
+
+if [ -z "$SMTP_USER" ] ; then
+	SMTP_USER="smtp"
+fi
+
+if [ -z "$SMTP_PASSWORD" ] ; then
+	SMTP_PASSWORD="smtp"
+fi
+
+if [ -z "$SMTP_AUTHENTICATION" ] ; then
+	SMTP_AUTHENTICATION="LOGIN"
+fi
+
+if [ -z "$SMTP_TLS" ] ; then
+	SMTP_TLS="NO"
+fi
+
+if [ -z "$SMTP_START_TLS" ] ; then
+	SMTP_START_TLS="NO"
+fi
+
+if [ -z "$FROM_OVERRIDE" ] ; then
+	FROM_OVERRIDE="YES"
+fi
+
+HOSTNAME=`hostname`
+sed \
+	-e "s~%%SMTP_SERVER%%~$SMTP_SERVER~" \
+	-e "s~%%USE_TLS%%~$SMTP_TLS~" \
+	-e "s~%%START_TLS%%~$SMTP_START_TLS~" \
+	-e "s~%%HOSTNAME%%~$HOSTNAME~" \
+	-e "s~%%AUTH_USER%%~$SMTP_USER~" \
+	-e "s~%%AUTH_PASS%%~$SMTP_PASSWORD~" \
+	-e "s~%%AUTH_METHOD%%~$SMTP_AUTHENTICATION~" \
+	-e "s~%%FROM_OVERRIDE%%~$FROM_OVERRIDE~" \
+  	/etc/ssmtp.conf.tpl > /etc/ssmtp.conf
 sed -e "s/%%USER%%/$USER/" \
 	-e "s/%%PHP_MEMORY_LIMIT%%/$PHP_MEMORY_LIMIT/" \
 	-e "s/%%PHP_POST_MAX_SIZE%%/$PHP_POST_MAX_SIZE/" \
