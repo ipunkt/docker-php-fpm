@@ -191,9 +191,6 @@ RUN apt-get update && apt-get install -y libmcrypt-dev libmysqlclient-dev \
 	&& { \
 	 echo 'mailhub=%%SMTP_SERVER%%'; \
 	 echo 'hostname=%%HOSTNAME%%'; \
-	 echo 'AuthUser=%%AUTH_USER%%'; \
-	 echo 'AuthPass=%%AUTH_PASS%%'; \
-	 echo 'AuthMethod=%%AUTH_METHOD%%'; \
 	 echo 'FromLineOverride=%%FROM_OVERRIDE%%'; \
 	 echo 'UseTLS=%%USE_TLS%%'; \
 	 echo 'UseSTARTTLS=%%START_TLS%%'; \
