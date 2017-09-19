@@ -75,7 +75,7 @@ sed \
 	-e "s~%%FROM_OVERRIDE%%~$FROM_OVERRIDE~" \
   	/etc/ssmtp.conf.tpl > /etc/ssmtp.conf
 
-if [ ! -z "$AUTH_METHOD" ] ; then 
+if [ ! -z "$SMTP_AUTHENTICATION" ] ; then 
 	{
 		 echo 'AuthUser='$SMTP_USER; \
 		 echo 'AuthPass='$SMTP_PASSWORD; \
