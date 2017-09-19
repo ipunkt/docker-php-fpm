@@ -42,7 +42,7 @@ if [ -z "$DEFAULT_TIMEZONE" ] ; then
 fi
 
 if [ -z "$SMTP_SERVER" ] ; then
-	SMTP_SERVER="smtp"
+	SMTP_SERVER="mail"
 fi
 
 if [ -z "$SMTP_USER" ] ; then
