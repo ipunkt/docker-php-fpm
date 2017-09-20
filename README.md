@@ -15,15 +15,15 @@ PHP FPM based on the official php docker images for versions not supported there
 This image uses ssmtp for sending mails. The following environment variables can
 be set to influence the ssmtp configuration file:
 
-||= Environment variable =||= ssmtp configuration file value =||= default value =||= Comment =||
-||  ====================  ||  ==============================  ||  =============  ||           ||
-|| SMTP\_SERVER           || mailhub                          || smtp            ||           ||
-|| SMTP\_TLS              || UseTLS                           || NO              ||           ||
-|| SMTP\_START\_TLS       || UseSTARTTLS                      || NO              ||           ||
-|| SMTP\_AUTHENTICATION   || AuthMethod                       || ``              ||           ||
-|| SMTP\_USER             || AuthUser                         || smtp            || Only set if SMTP\_AUTHENTICATION is not empty ||
-|| SMTP\_PASSWORD         || AuthPass                         || smtp            || Only set if SMTP\_AUTHENTICATION is not empty ||
-|| FROM\_OVERRIDE         || FromLineOverride                 || YES             ||           ||
+| Environment variable | ssmtp configuration file value | default value | Comment =|
+|  --------------------  |  ------------------------------  |  -------------  | --------- |
+| SMTP\_SERVER           | mailhub                          | smtp            |           |
+| SMTP\_TLS              | UseTLS                           | NO              |           |
+| SMTP\_START\_TLS       | UseSTARTTLS                      | NO              |           |
+| SMTP\_AUTHENTICATION   | AuthMethod                       | ``              |           |
+| SMTP\_USER             | AuthUser                         | smtp            | Only set if SMTP\_AUTHENTICATION is not empty |
+| SMTP\_PASSWORD         | AuthPass                         | smtp            | Only set if SMTP\_AUTHENTICATION is not empty |
+| FROM\_OVERRIDE         | FromLineOverride                 | YES             |           |
 
 # Usage
 ## Docker
