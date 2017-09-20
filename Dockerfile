@@ -194,7 +194,7 @@ RUN apt-get update && apt-get install -y libmcrypt-dev libmysqlclient-dev \
 	 echo 'FromLineOverride=%%FROM_OVERRIDE%%'; \
 	 echo 'UseTLS=%%USE_TLS%%'; \
 	 echo 'UseSTARTTLS=%%START_TLS%%'; \
- } | tee /etc/ssmtp.conf.tpl 	\
+ } | tee /etc/ssmtp/ssmtp.conf.tpl 	\
 	 && docker-php-ext-install -j$(nproc) iconv mcrypt mysql pdo_mysql \
 	&& docker-php-ext-enable iconv mcrypt mysql pdo_mysql
 

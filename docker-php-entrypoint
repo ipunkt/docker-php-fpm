@@ -73,7 +73,7 @@ sed \
 	-e "s~%%START_TLS%%~$SMTP_START_TLS~" \
 	-e "s~%%HOSTNAME%%~$HOSTNAME~" \
 	-e "s~%%FROM_OVERRIDE%%~$FROM_OVERRIDE~" \
-  	/etc/ssmtp.conf.tpl > /etc/ssmtp.conf
+  	/etc/ssmtp/ssmtp.conf.tpl > /etc/ssmtp/ssmtp.conf
 
 if [ ! -z "$SMTP_AUTHENTICATION" ] ; then 
 	{
